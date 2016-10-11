@@ -2,12 +2,15 @@
 [![npm version][2]][3] [![build status][4]][5] [![test coverage][6]][7]
 [![downloads][8]][9] [![js-standard-style][10]][11]
 
-A selection of native DOM elements.
+A selection of configurable native DOM UI elements.
 
 ## Usage
 ```js
 const Avatar = require('base-elements/avatar')
+const css = require('sheetify')
 const html = require('bel')
+
+css('tachyons')
 
 const tree = html`<main>${Avatar()}</main>`
 document.body.appendChild(tree)
