@@ -27,14 +27,16 @@ Create a circular avatar image. `opts` can contain:
 - __style:__ (default: `""`) set additional styles on the element
 
 ## progress(opts)
-Create a progress bar. `opts` can contain
+Create a progress bar. `opts` can contain:
 - __value:__ (default: `0`) set the progress of the element (`0 >= x <= 1`)
 - __color:__ (default: `'blue'`) set the color on the element
 - __class:__ (default: `""`) set additional classes on the element
 - __style:__ (default: `""`) set additional styles on the element
 
-## tooltip(str, opts)
-Create a tooltip over an element. `opts` can contain
+## tooltip(text, opts, child)
+Create a tooltip on a child element from a string. `opts` can contain:
+- __position:__ (default: `'up'`) set the position of the tooltip. Enums are:
+  `'up'`, `'down'`, `'left'`, `'right'`
 - __class:__ (default: `""`) set additional classes on the element
 - __style:__ (default: `""`) set additional styles on the element
 

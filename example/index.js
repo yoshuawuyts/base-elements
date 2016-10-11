@@ -8,7 +8,7 @@ css('tachyons')
 const els = [
   el('avatar', base.avatar({ src: 'http://lorempixel.com/64/64/cats', size: 3 })),
   el('progress', base.progress({ value: 0.75, class: 'blue' })),
-  el('tooltip', base.tooltip('Yes, this is Henry', html`<div>Hop on the hoover!</div>`))
+  el('tooltip', base.tooltip('Yes, this is Henry', { position: 'right' }, html`<div class="dib pointer">Hop on the hoover!</div>`))
 ]
 
 const nav = html`

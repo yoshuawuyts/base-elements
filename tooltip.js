@@ -1,5 +1,7 @@
 const assert = require('assert')
-const html = require('bel')
+const css = require('sheetify')
+
+css('balloon-css/balloon.min.css')
 
 // create a tooltip
 // (str, obj?, obj?) -> obj
@@ -14,24 +16,12 @@ module.exports = function (text, opts, child) {
   assert.ok(child, 'base-elements/tooltip: child should exist')
 
   const cls = opts.class || ''
+  const pos = opts.position || 'up'
 
   assert.equal(typeof cls, 'string', 'base-elements/tooltip: cls should be a string')
+  assert.equal(typeof pos, 'string', 'base-elements/tooltip: pos should be a string')
 
-  const outer = 'position: relative; display: inline-block; cursor: pointer; box-sizing: border-box;'
-  const tooltipBox = 'position: absolute; bottom: 100%; left: 50%; font-size: 12px; white-space: nowrap; padding: 4px 8px; border-radius: 2px; transform: translate(-50%, -8px); color: rgb(255, 255, 255); background-color: rgb(17, 17, 17);'
-  const inline = '._tooltip_box { display: none } ._tooltip:hover ._tooltip_box { display: block }'
-  const arrow = 'position: absolute; top: 100%; left: 50%; border-width: 6px; border-style: solid; border-color: rgb(17, 17, 17) transparent transparent; border-image: initial; transform: translate(-50%, 0px);'
-
-  return html`
-    <span
-      class="relative dib pointer pa4 _tooltip"
-      style=${outer}
-      aria-label="Tooltip">
-      <style>${inline}</style>
-      <div class="_tooltip_box tc" style=${tooltipBox}>
-        ${text}
-        <div style=${arrow}></div>
-      </div>
-      ${child}
-    </span>`
+  child.setAttribute('data-balloon', text)
+  child.setAttribute('data-balloon-pos', pos)
+  return child
 }
