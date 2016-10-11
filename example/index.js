@@ -7,15 +7,6 @@ css('tachyons')
 
 const els = [
   el('avatar', base.avatar({ src: 'http://lorempixel.com/64/64/cats', size: 3 })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' })),
   el('progress', base.progress({ value: 0.75, class: 'blue' }))
 ]
 
