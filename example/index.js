@@ -5,9 +5,13 @@ const base = require('..')
 
 css('tachyons')
 
+const els = [
+  el('avatar', base.avatar({ src: 'http://lorempixel.com/64/64/cats', size: 3 }))
+]
+
 const tree = html`
   <body class="w-100 sans-serif bg-black">
-    <nav class="flex justify-end mt3 mh3 pa4 bg-white">
+    <nav class="flex justify-end mt3 mh3 pa5 bg-white">
       <a class="ml3 black b link" href="https://github.com/yoshuawuyts/base-element">
         GitHub
       </a>
@@ -15,16 +19,18 @@ const tree = html`
         npm
       </a>
     </nav>
-    <header class="bg-white mh3 pa4 pt6">
+    <header class="bg-white mh3 pa5 pt6">
       <div class="flex flex-column flex-row-l mw8">
         <h1 class="mw6-ns ma0 f-5 f-6-ns">base elements</h1>
-        <h2 class="mw6-ns f2 f1-ns">A selection of configurable native DOM elements</h2>
+        <h2 class="mw6-ns f2 f1-ns">
+          A selection of configurable native DOM elements
+        </h2>
       </div>
     </header>
 
-    <main class="mh3 pa4 bg-white">
+    <main class="mh3 pt3 ph5 bg-white">
       <div class="mw8">
-        ${el('avatar', base.avatar({ src: 'http://lorempixel.com/64/64/cats', size: 3 }))}
+        ${els}
       </div>
     </main>
     <footer class="mh3 mb3 pt6 bg-white">
