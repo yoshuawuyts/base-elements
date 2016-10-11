@@ -9,25 +9,26 @@ module.exports = function (opts) {
 
   const src = opts.src || ''
   const cls = opts.class || ''
-  const rad = opts.size || 3
+  const size = opts.size || 3
 
   assert.equal(typeof opts, 'object', 'base-elements/avatar: opts should be an object')
   assert.equal(typeof src, 'string', 'base-elements/avatar: src should be a string')
   assert.equal(typeof cls, 'string', 'base-elements/avatar: cls should be a string')
-  assert.equal(typeof rad, 'number', 'base-elements/avatar: rad should be a number')
-  assert.ok(rad >= 1 && rad <= 5, 'base-elements/avatar: rad should be >= 1 && <= 5')
+  assert.equal(typeof size, 'number', 'base-elements/avatar: size should be a number')
+  assert.ok(size >= 1 && size <= 5, 'base-elements/avatar: size should be >= 1 && <= 5')
 
-  const clx = 'br-100 w' + rad + ' ' + cls
+  const clx = 'br-100 w' + size + ' ' + cls
 
   return html`<img src=${src} class=${clx}></img>`
 }
 
 },{"assert":3,"bel":9}],2:[function(require,module,exports){
 module.exports = {
-  avatar: require('./avatar')
+  avatar: require('./avatar'),
+  progress: require('./progress')
 }
 
-},{"./avatar":1}],3:[function(require,module,exports){
+},{"./avatar":1,"./progress":22}],3:[function(require,module,exports){
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
 // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -2570,7 +2571,36 @@ function createStyleElement() {
     return styleElement;
 }
 
-},{}],"bankai-app":[function(require,module,exports){
+},{}],22:[function(require,module,exports){
+const assert = require('assert')
+const html = require('bel')
+
+// create a progress bar
+// (obj?) -> obj
+module.exports = function (opts) {
+  opts = opts || {}
+
+  const cls = opts.class || ''
+  const value = opts.value || 0
+  const clr = opts.color || 'blue'
+
+  assert.equal(typeof opts, 'object', 'base-elements/progress: opts should be an object')
+  assert.equal(typeof cls, 'string', 'base-elements/progress: cls should be a string')
+  assert.equal(typeof value, 'number', 'base-elements/progress: value should be a number')
+  assert.ok(value >= 0 && value <= 1, 'base-elements/progress: value should be >= 0 && <= 1')
+
+  const clx = 'w-100 db bn input-reset br-100 _progress h1 ' + clr + ' ' + cls
+  const ilx = '._progress::-webkit-progress-bar { background-color: rgba(0, 0, 0, .125); } ._progress::-webkit-progress-value { background-color: currentcolor; } ._progress::-moz-progress-bar { background-color: currentcolor; }'
+
+  return html`
+    <div>
+      <style>${ilx}</style>
+      <progress class=${clx} value=${value}></progress>
+    </div>
+  `
+}
+
+},{"assert":3,"bel":9}],"bankai-app":[function(require,module,exports){
 const mount = require('choo/mount')
 const css = 0
 const html = require('bel')
@@ -2578,9 +2608,14 @@ const base = require('..')
 
 ;((null || true) && "_601d8936")
 
+const els = [
+  el('avatar', base.avatar({ src: 'http://lorempixel.com/64/64/cats', size: 3 })),
+  el('progress', base.progress({ value: 0.75, class: 'blue' }))
+]
+
 const tree = html`
   <body class="w-100 sans-serif bg-black">
-    <nav class="flex justify-end mt3 mh3 pa4 bg-white">
+    <nav class="flex justify-end mt3 mh3 pa5 bg-white">
       <a class="ml3 black b link" href="https://github.com/yoshuawuyts/base-element">
         GitHub
       </a>
@@ -2588,19 +2623,22 @@ const tree = html`
         npm
       </a>
     </nav>
-    <header class="bg-white mh3 pa4 pt6">
+    <header class="bg-white mh3 pa5 pt6">
       <div class="flex flex-column flex-row-l mw8">
-        <h1 class="mw6-ns ma0 f-5 f-6-ns">base elements</h1>
-        <h2 class="mw6-ns f2 f1-ns">A selection of configurable native DOM elements</h2>
+        <h1 class="mw6-ns ma0 f-5 f-6-l">base elements</h1>
+        <h2 class="mw6-ns f2 f1-ns">
+          A selection of configurable native DOM elements
+        </h2>
       </div>
     </header>
 
-    <main class="mh3 pa4 bg-white">
-      <div class="mw8">
-        ${el('avatar', base.avatar({ src: 'http://lorempixel.com/64/64/cats', size: 3 }))}
+    <main class="mh3 pt3 pt4-l ph5 bg-white">
+      <div class="cf">
+        ${els}
       </div>
     </main>
-    <footer class="mh3 mb3 pt6 bg-white">
+    <footer class="mh3 mb3 pt6 pb3 bg-white flex justify-center">
+      <p class="b">Made in Berlin</p>
     </footer>
   </body>
 `
@@ -2609,7 +2647,7 @@ mount('body', tree)
 
 function el (name, el) {
   return html`
-    <section>
+    <section class="fl w-100 w-50-m w-25-l pr4">
       <h2 class="f3">${name}</h2>
       ${el}
     </section>
