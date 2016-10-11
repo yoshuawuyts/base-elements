@@ -1,3 +1,4 @@
 module.exports = {
-  avatar: require('./avatar')
+  avatar: require('./avatar'),
+  progress: require('./progress')
 }
