@@ -2616,17 +2616,17 @@ const els = [
 const tree = html`
   <body class="w-100 sans-serif bg-black">
     <nav class="flex justify-end mt3 mh3 pa5 bg-white">
-      <a class="ml3 black b link" href="https://github.com/yoshuawuyts/base-element">
+      <a class="ml3 black b link" href="https://github.com/yoshuawuyts/base-elements">
         GitHub
       </a>
-      <a class="ml3 black b link" href="https://npmjs.com/package/base-element">
+      <a class="ml3 black b link" href="https://npmjs.com/package/base-elements">
         npm
       </a>
     </nav>
     <header class="bg-white mh3 pa5 pt6">
       <div class="flex flex-column flex-row-l mw8">
         <h1 class="mw6-ns ma0 f-5 f-6-l">base elements</h1>
-        <h2 class="mw6-ns f2 f1-ns">
+        <h2 class="mw6-ns f2 f1-ns flex items-end">
           A selection of configurable native DOM elements
         </h2>
       </div>
