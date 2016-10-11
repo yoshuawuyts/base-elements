@@ -40,8 +40,7 @@ const header = html`
 const footer = html`
   <footer class="mh3 mb3 pt6 pb3 bg-white flex justify-center">
     <p class="b">
-      Made in Berlin.
-      Sponsored by <a href="http://dat-data.com/" class="link black">Dat</a>
+     ${base.tooltip('❤️', html`<span class=pointer>Made in Berlin</span>`)}
     </p>
   </footer>
 `
