@@ -20,6 +20,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "balloon-css": "^0.3.0",
     "bel": "^4.5.0"
   },
   "devDependencies": {
