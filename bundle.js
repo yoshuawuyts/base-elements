@@ -25,10 +25,11 @@ module.exports = function (opts) {
 },{"assert":3,"bel":9}],2:[function(require,module,exports){
 module.exports = {
   avatar: require('./avatar'),
-  progress: require('./progress')
+  progress: require('./progress'),
+  tooltip: require('./tooltip')
 }
 
-},{"./avatar":1,"./progress":22}],3:[function(require,module,exports){
+},{"./avatar":1,"./progress":22,"./tooltip":23}],3:[function(require,module,exports){
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
 // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -2600,7 +2601,36 @@ module.exports = function (opts) {
   `
 }
 
-},{"assert":3,"bel":9}],"bankai-app":[function(require,module,exports){
+},{"assert":3,"bel":9}],23:[function(require,module,exports){
+const assert = require('assert')
+const css = 0
+
+;((null || true) && "_6fbc42db")
+
+// create a tooltip
+// (str, obj?, obj?) -> obj
+module.exports = function (text, opts, child) {
+  if (!child) {
+    child = opts
+    opts = {}
+  }
+
+  assert.equal(typeof text, 'string', 'base-elements/tooltip: text should be a string')
+  assert.equal(typeof opts, 'object', 'base-elements/tooltip: opts should be an object')
+  assert.ok(child, 'base-elements/tooltip: child should exist')
+
+  const cls = opts.class || ''
+  const pos = opts.position || 'up'
+
+  assert.equal(typeof cls, 'string', 'base-elements/tooltip: cls should be a string')
+  assert.equal(typeof pos, 'string', 'base-elements/tooltip: pos should be a string')
+
+  child.setAttribute('data-balloon', text)
+  child.setAttribute('data-balloon-pos', pos)
+  return child
+}
+
+},{"assert":3,"insert-css":21}],"bankai-app":[function(require,module,exports){
 const mount = require('choo/mount')
 const css = 0
 const html = require('bel')
@@ -2610,44 +2640,63 @@ const base = require('..')
 
 const els = [
   el('avatar', base.avatar({ src: 'http://lorempixel.com/64/64/cats', size: 3 })),
-  el('progress', base.progress({ value: 0.75, class: 'blue' }))
+  el('progress', base.progress({ value: 0.75, class: 'blue' })),
+  el('tooltip', base.tooltip('Yes, this is Henry', { position: 'right' }, html`<div class="dib pointer">Hop on the hoover!</div>`))
 ]
+
+const nav = html`
+  <nav class="flex justify-between justify-end-ns mt3 mh3 pa5 f5 bg-white">
+    <a class="ml3 black b link" href="https://github.com/yoshuawuyts/base-elements">
+      GitHub
+    </a>
+    <a class="ml3 black b link" href="https://npmjs.com/package/base-elements">
+      npm
+    </a>
+    <a class="ml3 black b link" href="https://yoshuawuyts.com">
+      yosh
+    </a>
+  </nav>
+`
+const header = html`
+  <header class="bg-white mh3 pa5 pt3 pt6-l">
+    <div class="flex flex-column flex-row-l mw8">
+      <h1 class="mw6-ns ma0 f1 f-5-m f-6-l">
+        base elements
+      </h1>
+      <h2 class="mw6-ns pa2-l f2 f1-ns">
+        A selection of configurable native DOM elements
+      </h2>
+    </div>
+  </header>
+`
+
+const footer = html`
+  <footer class="mh3 mb3 pt6 pb3 bg-white flex justify-center">
+    <p class="b">
+     ${base.tooltip('❤️', html`<span class=pointer>Made in Berlin</span>`)}
+    </p>
+  </footer>
+`
 
 const tree = html`
   <body class="w-100 sans-serif bg-black">
-    <nav class="flex justify-end mt3 mh3 pa5 bg-white">
-      <a class="ml3 black b link" href="https://github.com/yoshuawuyts/base-elements">
-        GitHub
-      </a>
-      <a class="ml3 black b link" href="https://npmjs.com/package/base-elements">
-        npm
-      </a>
-    </nav>
-    <header class="bg-white mh3 pa5 pt6">
-      <div class="flex flex-column flex-row-l mw8">
-        <h1 class="mw6-ns ma0 f-5 f-6-l">base elements</h1>
-        <h2 class="mw6-ns f2 f1-ns flex items-end">
-          A selection of configurable native DOM elements
-        </h2>
-      </div>
-    </header>
-
-    <main class="mh3 pt3 pt4-l ph5 bg-white">
+    ${nav}
+    ${header}
+    <main class="mh3 pt2-l ph5 bg-white">
       <div class="cf">
         ${els}
       </div>
     </main>
-    <footer class="mh3 mb3 pt6 pb3 bg-white flex justify-center">
-      <p class="b">Made in Berlin</p>
-    </footer>
+    ${footer}
   </body>
 `
-
 mount('body', tree)
 
+// create a new el
+// (str, obj) -> obj
 function el (name, el) {
   return html`
-    <section class="fl w-100 w-50-m w-25-l pr4">
+    <section class="fl w-100 w-50-m w-25-l pr4 pt4">
       <h2 class="f3">${name}</h2>
       ${el}
     </section>
