@@ -17,11 +17,17 @@ document.body.appendChild(tree)
 ```
 
 ## API
-### avatar(opts, children)
+### avatar(opts)
 Create a circular avatar image. `opts` can contain:
 - __src:__ (default: `null`) set the `src` tag of the element
 - __size:__ (default: `3`) set the size of the element (uses `.w1 ... .w5`)
-- __class:__ (default: `null`) set additional classes on the element
+- __class:__ (default: `""`) set additional classes on the element
+
+## progress(opts)
+Create a progress bar. `opts` can contain
+- __value:__ (default: `0`) set the progress of the element (`0 >= x <= 1`)
+- __color:__ (default: `'blue'`) set the color on the element
+- __class:__ (defualt: `""`) set additional classes on the element
 
 ## See Also
 - [bel](https://github.com/shama/bel)
