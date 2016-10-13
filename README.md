@@ -1,5 +1,5 @@
 # base-elements [![stability][0]][1]
-[![npm version][2]][3] [![build status][4]][5] [![test coverage][6]][7]
+[![npm version][2]][3] [![build status][4]][5]
 [![downloads][8]][9] [![js-standard-style][10]][11]
 
 A selection of configurable native DOM UI elements. Inspired by
@@ -61,8 +61,6 @@ $ npm install base-elements
 [3]: https://npmjs.org/package/base-elements
 [4]: https://img.shields.io/travis/yoshuawuyts/base-elements/master.svg?style=flat-square
 [5]: https://travis-ci.org/yoshuawuyts/base-elements
-[6]: https://img.shields.io/codecov/c/github/yoshuawuyts/base-elements/master.svg?style=flat-square
-[7]: https://codecov.io/github/yoshuawuyts/base-elements
 [8]: http://img.shields.io/npm/dm/base-elements.svg?style=flat-square
 [9]: https://npmjs.org/package/base-elements
 [10]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
