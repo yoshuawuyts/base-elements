@@ -13,13 +13,13 @@ const els = [
 
 const nav = html`
   <nav class="flex justify-between justify-end-ns mt3 mh3 pa5 f5 bg-white">
-    <a class="ml3 black b link" href="https://github.com/yoshuawuyts/base-elements">
+    <a class="ml3-ns black b link" href="https://github.com/yoshuawuyts/base-elements">
       GitHub
     </a>
-    <a class="ml3 black b link" href="https://npmjs.com/package/base-elements">
+    <a class="ml3-ns black b link" href="https://npmjs.com/package/base-elements">
       npm
     </a>
-    <a class="ml3 black b link" href="https://yoshuawuyts.com">
+    <a class="ml3-ns black b link" href="https://yoshuawuyts.com">
       yosh
     </a>
   </nav>
@@ -40,7 +40,13 @@ const header = html`
 const footer = html`
   <footer class="mh3 mb3 pt6 pb3 bg-white flex justify-center">
     <p class="b">
-     ${base.tooltip('❤️', html`<span class=pointer>Made in Berlin</span>`)}
+      Made in Berlin.
+      <span>
+        Sponsored by
+        <a class="link black" href="http://dat-data.com">
+          ${base.tooltip('❤️', html`<span class=pointer> Dat</span>`)}
+        </a>
+      </span>
     </p>
   </footer>
 `
