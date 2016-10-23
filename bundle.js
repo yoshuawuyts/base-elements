@@ -2675,7 +2675,7 @@ const footer = html`
       <span>
         Sponsored by
         <a class="link black" href="http://dat-data.com">
-          ${base.tooltip('❤️', html`<span class=pointer> Dat</span>`)}
+          ${base.tooltip('🐈', html`<span class=pointer> Dat</span>`)}
         </a>
       </span>
     </p>
