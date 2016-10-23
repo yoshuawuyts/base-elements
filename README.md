@@ -22,23 +22,26 @@ document.body.appendChild(tree)
 ### avatar(opts)
 Create a circular avatar image. `opts` can contain:
 - __src:__ (default: `null`) set the `src` tag of the element
-- __size:__ (default: `3`) set the size of the element (uses `.w1 ... .w5`)
-- __class:__ (default: `""`) set additional classes on the element
-- __style:__ (default: `""`) set additional styles on the element
+- __size:__ (default: `3`) set the size of the element. Enums: `{1, 2, 3, 4,
+  5}`
+- __class:__ (default: `''`) set additional classes on the element
+- __style:__ (default: `''`) set additional styles on the element
 
 ## progress(opts)
 Create a progress bar. `opts` can contain:
 - __value:__ (default: `0`) set the progress of the element (`0 >= x <= 1`)
 - __color:__ (default: `'blue'`) set the color on the element
-- __class:__ (default: `""`) set additional classes on the element
-- __style:__ (default: `""`) set additional styles on the element
+- __direction:__ (default: `'ltr'`) set the progress bar direction. Enums: `{
+  'ltr', 'rtl' }`
+- __class:__ (default: `''`) set additional classes on the element
+- __style:__ (default: `''`) set additional styles on the element
 
 ## tooltip(text, opts, child)
 Create a tooltip on a child element from a string. `opts` can contain:
-- __position:__ (default: `'up'`) set the position of the tooltip. Enums are:
-  `'up'`, `'down'`, `'left'`, `'right'`
-- __class:__ (default: `""`) set additional classes on the element
-- __style:__ (default: `""`) set additional styles on the element
+- __position:__ (default: `'up'`) set the position of the tooltip. Enums:
+  `{ 'up', 'down', 'left', 'right' }`
+- __class:__ (default: `''`) set additional classes on the element
+- __style:__ (default: `''`) set additional styles on the element
 
 ## See Also
 - [bel](https://github.com/shama/bel)
