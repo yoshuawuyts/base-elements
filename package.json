@@ -12,7 +12,7 @@
   },
   "browserify": {
     "transforms": [
-      "sheetify"
+      "sheetify/transform"
     ]
   },
   "repository": "yoshuawuyts/base-elements",
