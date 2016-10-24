@@ -10,6 +10,11 @@
     "test": "standard && npm run deps",
     "test:cov": "standard && npm run deps"
   },
+  "browserify": {
+    "transforms": [
+      "sheetify"
+    ]
+  },
   "repository": "yoshuawuyts/base-elements",
   "keywords": [
     "dom",
@@ -21,7 +26,8 @@
   "license": "MIT",
   "dependencies": {
     "balloon-css": "^0.3.0",
-    "bel": "^4.5.0"
+    "bel": "^4.5.0",
+    "sheetify": "^5.1.1"
   },
   "devDependencies": {
     "bankai": "^3.3.1",
