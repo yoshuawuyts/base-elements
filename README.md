@@ -27,22 +27,18 @@ Create a circular avatar image.
 - __radius:__ (default: `100`) set the radius of the element. Enums:
   `{0, 1, 2, 3, 4, 100}`
 - __class:__ (default: `''`) set additional classes on the element
-- __style:__ (default: `''`) set additional styles on the element
 
-## progress(opts)
+## progress(value, opts?)
 Create a progress bar.
 `value` is a number between 0 and 1. `opts` can contain:
-- __color:__ (default: `'blue'`) set the color on the element
 - __reverse:__ (default: `'false'`) reverses the progress bar direction
 - __class:__ (default: `''`) set additional classes on the element
-- __style:__ (default: `''`) set additional styles on the element
 
 ## tooltip(text, opts, child)
 Create a tooltip on a child element from a string. `opts` can contain:
 - __position:__ (default: `'up'`) set the position of the tooltip. Enums:
   `{ 'up', 'down', 'left', 'right' }`
 - __class:__ (default: `''`) set additional classes on the element
-- __style:__ (default: `''`) set additional styles on the element
 
 ## See Also
 - [bel](https://github.com/shama/bel)
