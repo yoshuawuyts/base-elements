@@ -30,11 +30,10 @@ Create a circular avatar image.
 - __style:__ (default: `''`) set additional styles on the element
 
 ## progress(opts)
-Create a progress bar. `opts` can contain:
-- __value:__ (default: `0`) set the progress of the element (`0 >= x <= 1`)
+Create a progress bar.
+`value` is a number between 0 and 1. `opts` can contain:
 - __color:__ (default: `'blue'`) set the color on the element
-- __direction:__ (default: `'ltr'`) set the progress bar direction. Enums: `{
-  'ltr', 'rtl' }`
+- __reverse:__ (default: `'false'`) reverses the progress bar direction
 - __class:__ (default: `''`) set additional classes on the element
 - __style:__ (default: `''`) set additional styles on the element
 
