@@ -24,6 +24,7 @@ Create a circular avatar image. `opts` can contain:
 - __src:__ (default: `null`) set the `src` tag of the element
 - __size:__ (default: `3`) set the size of the element. Enums: `{1, 2, 3, 4,
   5}`
+- __radius:__ (default: `-100`) set the radius of the element. Enums: `{0, 1, 2, 3, 4}`  
 - __class:__ (default: `''`) set additional classes on the element
 - __style:__ (default: `''`) set additional styles on the element
 
