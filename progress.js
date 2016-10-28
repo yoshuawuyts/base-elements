@@ -17,19 +17,17 @@ module.exports = function (value, opts) {
   opts = opts || {}
 
   const cls = opts.class || ''
-  const clr = opts.color || 'blue'
   const direction = opts.reverse
 
   assert.equal(typeof value, 'number', 'base-elements/progress: value should be a number')
   assert.ok(value >= 0 && value <= 1, 'base-elements/progress: value should be >= 0 && <= 1')
   assert.equal(typeof opts, 'object', 'base-elements/progress: opts should be an object')
   assert.equal(typeof cls, 'string', 'base-elements/progress: opts.class should be a string')
-  assert.equal(typeof clr, 'string', 'base-elements/progress: opts.color should be a string')
 
   const directionClass = (direction) ? ('reverse') : ''
 
   // TODO(yw): patch sheetify so we can create global styles, inline
-  const classStyle = 'w-100 db bn input-reset br-100 h1 ' + clr + ' ' + cls + ' ' + prefix + ' ' + directionClass
+  const classStyle = 'w-100 db bn input-reset br-100 h1 ' + cls + ' ' + prefix + ' ' + directionClass
 
   return html`
       <progress class=${classStyle} value=${value}></progress>
