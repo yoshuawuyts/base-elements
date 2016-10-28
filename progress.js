@@ -1,30 +1,37 @@
+const css = require('sheetify')
 const assert = require('assert')
 const html = require('bel')
 
+const prefix = css`
+  :host::-webkit-progress-bar { background-color: rgba(0, 0, 0, .125); }
+  :host::-webkit-progress-value { background-color: currentcolor; }
+  :host::-moz-progress-bar { background-color: currentcolor; }
+  :host.reverse {
+    direction: rtl;
+  }
+`
+
 // create a progress bar
-// (obj?) -> obj
-module.exports = function (opts) {
+// (num, obj?) -> html
+module.exports = function (value, opts) {
   opts = opts || {}
 
   const cls = opts.class || ''
-  const value = opts.value || 0
   const clr = opts.color || 'blue'
-  const direction = opts.direction || 'ltr'
+  const direction = opts.reverse
 
-  assert.equal(typeof opts, 'object', 'base-elements/progress: opts should be an object')
-  assert.equal(typeof cls, 'string', 'base-elements/progress: cls should be a string')
   assert.equal(typeof value, 'number', 'base-elements/progress: value should be a number')
   assert.ok(value >= 0 && value <= 1, 'base-elements/progress: value should be >= 0 && <= 1')
+  assert.equal(typeof opts, 'object', 'base-elements/progress: opts should be an object')
+  assert.equal(typeof cls, 'string', 'base-elements/progress: opts.class should be a string')
+  assert.equal(typeof clr, 'string', 'base-elements/progress: opts.color should be a string')
+
+  const directionClass = (direction) ? ('reverse') : ''
 
   // TODO(yw): patch sheetify so we can create global styles, inline
-  const directionStyle = '.bel_progress { direction:' + direction + ' }'
-  const classStyle = 'w-100 db bn input-reset br-100 bel_progress h1 ' + clr + ' ' + cls
-  const inlineStyle = '.bel_progress::-webkit-progress-bar { background-color: rgba(0, 0, 0, .125); } .bel_progress::-webkit-progress-value { background-color: currentcolor; } .bel_progress::-moz-progress-bar { background-color: currentcolor; }'
+  const classStyle = 'w-100 db bn input-reset br-100 h1 ' + clr + ' ' + cls + ' ' + prefix + ' ' + directionClass
 
   return html`
-    <div>
-      <style>${inlineStyle + ' ' + directionStyle}</style>
       <progress class=${classStyle} value=${value}></progress>
-    </div>
   `
 }
