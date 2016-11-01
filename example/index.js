@@ -11,6 +11,11 @@ const els = [
   el('tooltip', base.tooltip('Yes, this is Henry', { position: 'right' }, html`<div class="dib pointer">Hop on the hoover!</div>`))
 ]
 
+const friends = [
+  'https://github.com/yoshuawuyts/form-element',
+  'https://github.com/shame/modal-element'
+]
+
 const nav = html`
   <nav class="flex justify-between justify-end-ns mt3 mh3 pa5 f5 bg-white">
     <a class="ml3-ns black b link" href="https://github.com/yoshuawuyts/base-elements">
@@ -37,6 +42,22 @@ const header = html`
   </header>
 `
 
+const friendEls = html`
+  <section class="pt5 mw6-ns">
+    <h1 class="f1 ma0">
+      See Also
+    </h1>
+    <div class="cf">
+      ${friends.map((uri) => html`
+        <a href=${uri}
+          class="fl w-100 w-50-ns pt4 f3 black link underline">
+          ${uri.match(/[\w-]*$/)}
+        </a>`
+      )}
+    </div>
+  </section>
+`
+
 const footer = html`
   <footer class="mh3 mb3 pt6 pb3 bg-white flex justify-center">
     <p class="b">
@@ -56,9 +77,10 @@ const tree = html`
     ${nav}
     ${header}
     <main class="mh3 pt2-l ph5 bg-white">
-      <div class="cf">
+      <section class="cf">
         ${els}
-      </div>
+      </section>
+      ${friendEls}
     </main>
     ${footer}
   </body>
