@@ -6,6 +6,7 @@ const html = require('bel')
 module.exports = function (src, opts) {
   opts = opts || {}
 
+  const alt = opts.alt || 'avatar'
   const cls = opts.class || ''
   const size = 'w' + (opts.size || 3) + ' ' + 'h' + (opts.size || 3)
   const radius = 'br' + ((opts.radius)
@@ -15,6 +16,7 @@ module.exports = function (src, opts) {
     : '-100')
 
   assert.equal(typeof src, 'string', 'base-elements/avatar: src should be a string')
+  assert.equal(typeof alt, 'string', 'base-elements/avatar: alt should be a string')
   assert.equal(typeof opts, 'object', 'base-elements/avatar: opts should be an object')
   assert.equal(typeof cls, 'string', 'base-elements/avatar: cls should be a string')
   assert.equal(typeof size, 'string', 'base-elements/avatar: size should be a string')
@@ -24,5 +26,5 @@ module.exports = function (src, opts) {
 
   const clx = size + ' ' + radius + ' ' + cls
 
-  return html`<img src=${src} class=${clx}></img>`
+  return html`<img src=${src} alt=${alt} class=${clx}></img>`
 }

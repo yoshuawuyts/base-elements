@@ -22,6 +22,7 @@ document.body.appendChild(tree)
 ### avatar(src, opts?)
 Create a circular avatar image.
 `src` is a URL. `opts` can contain:
+- __alt:__ (default: `'avatar'`) set an alt text for the image.
 - __size:__ (default: `3`) set the size of the element. Enums: `{1, 2, 3, 4,
   5}`
 - __radius:__ (default: `100`) set the radius of the element. Enums:
