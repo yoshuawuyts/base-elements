@@ -27,7 +27,7 @@
   "dependencies": {
     "balloon-css": "^0.4.0",
     "bel": "^4.5.0",
-    "sheetify": "^5.1.1"
+    "sheetify": "^6.0.0"
   },
   "devDependencies": {
     "bankai": "^3.3.1",
