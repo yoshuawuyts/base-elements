@@ -25,7 +25,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "balloon-css": "^0.3.0",
+    "balloon-css": "^0.4.0",
     "bel": "^4.5.0",
     "sheetify": "^5.1.1"
   },
