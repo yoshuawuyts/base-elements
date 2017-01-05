@@ -30,7 +30,7 @@
     "sheetify": "^5.1.1"
   },
   "devDependencies": {
-    "bankai": "^3.3.1",
+    "bankai": "^5.2.1",
     "choo": "^4.0.0-1",
     "dependency-check": "^2.6.0",
     "gh-pages": "^0.12.0",
