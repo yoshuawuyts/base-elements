@@ -4,14 +4,14 @@
   "description": "A selection of native DOM elements",
   "main": "index.js",
   "scripts": {
-    "start": "bankai start --entry=example/index.js --port 8080 --js.transform=sheetify/transform",
-    "build": "bankai build --entry=example/index.js --dir=dist/ && gh-pages -d dist/ && git push",
+    "start": "bankai start example/index.js --open",
+    "build": "bankai build example/index.js",
     "deps": "dependency-check . && dependency-check . -i balloon-css --extra --no-dev",
     "test": "standard && npm run deps",
     "test:cov": "standard && npm run deps"
   },
   "browserify": {
-    "transforms": [
+    "transform": [
       "sheetify/transform"
     ]
   },
@@ -27,10 +27,13 @@
   "dependencies": {
     "balloon-css": "^0.4.0",
     "bel": "^4.5.0",
-    "sheetify": "^5.1.1"
+    "nanocomponent": "^1.0.0",
+    "sheetify": "^5.1.1",
+    "xtend": "^4.0.1"
   },
   "devDependencies": {
-    "bankai": "^3.3.1",
+    "append-child": "^1.0.0",
+    "bankai": "^5.2.1",
     "choo": "^4.0.0-1",
     "dependency-check": "^2.6.0",
     "gh-pages": "^0.12.0",
