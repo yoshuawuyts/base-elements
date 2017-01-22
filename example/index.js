@@ -15,7 +15,7 @@ var els = [
 
 var friends = [
   'https://github.com/yoshuawuyts/form-element',
-  'https://github.com/shame/modal-element'
+  'https://github.com/yoshuawuyts/nanocomponent'
 ]
 
 var nav = html`
