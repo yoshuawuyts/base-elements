@@ -1,5 +1,5 @@
-const assert = require('assert')
-const css = require('sheetify')
+var assert = require('assert')
+var css = require('sheetify')
 
 css('balloon-css/balloon.min.css')
 
@@ -15,8 +15,8 @@ module.exports = function (text, opts, child) {
   assert.equal(typeof opts, 'object', 'base-elements/tooltip: opts should be an object')
   assert.ok(child, 'base-elements/tooltip: child should exist')
 
-  const cls = opts.class || ''
-  const pos = opts.position || 'up'
+  var cls = opts.class || ''
+  var pos = opts.position || 'up'
 
   assert.equal(typeof cls, 'string', 'base-elements/tooltip: cls should be a string')
   assert.equal(typeof pos, 'string', 'base-elements/tooltip: pos should be a string')

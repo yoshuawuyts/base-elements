@@ -8,13 +8,13 @@ A selection of configurable native DOM UI elements. Inspired by
 
 ## Usage
 ```js
-const Avatar = require('base-elements/avatar')
-const css = require('sheetify')
-const html = require('bel')
+var Avatar = require('base-elements/avatar')
+var css = require('sheetify')
+var html = require('bel')
 
 css('tachyons')
 
-const tree = html`<main>${Avatar()}</main>`
+var tree = html`<main>${Avatar()}</main>`
 document.body.appendChild(tree)
 ```
 

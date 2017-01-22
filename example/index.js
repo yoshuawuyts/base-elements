@@ -1,22 +1,22 @@
-const mount = require('choo/mount')
-const css = require('sheetify')
-const html = require('bel')
-const base = require('..')
+var mount = require('choo/mount')
+var css = require('sheetify')
+var html = require('bel')
+var base = require('..')
 
 css('tachyons')
 
-const els = [
+var els = [
   el('avatar', base.avatar('http://lorempixel.com/64/64/cats', { size: 3 })),
   el('progress', base.progress(0.75, { class: 'blue', reverse: true })),
   el('tooltip', base.tooltip('Yes, this is Henry', { position: 'right' }, html`<div class="dib pointer">Hop on the hoover!</div>`))
 ]
 
-const friends = [
+var friends = [
   'https://github.com/yoshuawuyts/form-element',
   'https://github.com/shame/modal-element'
 ]
 
-const nav = html`
+var nav = html`
   <nav class="flex justify-between justify-end-ns mt3 mh3 pa5 f5 bg-white">
     <a class="ml3-ns black b link" href="https://github.com/yoshuawuyts/base-elements">
       GitHub
@@ -29,7 +29,7 @@ const nav = html`
     </a>
   </nav>
 `
-const header = html`
+var header = html`
   <header class="bg-white mh3 pa5 pt3 pt6-l">
     <div class="flex flex-column flex-row-l mw8">
       <h1 class="mw6-ns ma0 f1 f-5-m f-6-l">
@@ -42,7 +42,7 @@ const header = html`
   </header>
 `
 
-const friendEls = html`
+var friendEls = html`
   <section class="pt5 mw6-ns">
     <h1 class="f1 ma0">
       See Also
@@ -58,7 +58,7 @@ const friendEls = html`
   </section>
 `
 
-const footer = html`
+var footer = html`
   <footer class="mh3 mb3 pt6 pb3 bg-white flex justify-center">
     <p class="b">
       Made in Berlin.
@@ -72,7 +72,7 @@ const footer = html`
   </footer>
 `
 
-const tree = html`
+var tree = html`
   <body class="w-100 sans-serif bg-black">
     ${nav}
     ${header}
