@@ -43,7 +43,7 @@ var header = html`
 
 var friendEls = html`
   <section class="pt5 mw6-ns">
-    <h1 class="f1 ma0">
+    <h1 class="f1 ma0 mt3">
       See Also
     </h1>
     <div class="cf">
