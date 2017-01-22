@@ -40,6 +40,14 @@ Create a tooltip on a child element from a string. `opts` can contain:
   `{ 'up', 'down', 'left', 'right' }`
 - __class:__ (default: `''`) set additional classes on the element
 
+## modal(opts)
+Create a new modal element. `opts` is similar to the those passed into
+[nanocomponent][nc]. Some properties are slightly different:
+- __render:__ (required). Creates the inner content for the modal element;
+  floated in the center of the page.
+- __onexit:__ called when the element scrolls out of view, or the `esc` key is
+  pressed. Useful to trigger unmounts with
+
 ## See Also
 - [bel](https://github.com/shama/bel)
 - [tachyons](https://github.com/mrmrs/tachyons)
@@ -65,3 +73,4 @@ $ npm install base-elements
 [9]: https://npmjs.org/package/base-elements
 [10]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
 [11]: https://github.com/feross/standard
+[nc]: https://github.com/yoshuawuyts/nanocomponent/

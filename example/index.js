@@ -1,3 +1,4 @@
+var append = require('append-child')
 var mount = require('choo/mount')
 var css = require('sheetify')
 var html = require('bel')
@@ -8,7 +9,8 @@ css('tachyons')
 var els = [
   el('avatar', base.avatar('http://lorempixel.com/64/64/cats', { size: 3 })),
   el('progress', base.progress(0.75, { class: 'blue', reverse: true })),
-  el('tooltip', base.tooltip('Yes, this is Henry', { position: 'right' }, html`<div class="dib pointer">Hop on the hoover!</div>`))
+  el('tooltip', base.tooltip('Not bad huh', { position: 'right' }, html`<div class="dib pointer">Hover me!</div>`)),
+  el('modal', createModal())
 ]
 
 var friends = [
@@ -23,9 +25,6 @@ var nav = html`
     </a>
     <a class="ml3-ns black b link" href="https://npmjs.com/package/base-elements">
       npm
-    </a>
-    <a class="ml3-ns black b link" href="https://yoshuawuyts.com">
-      yosh
     </a>
   </nav>
 `
@@ -97,3 +96,46 @@ function el (name, el) {
     </section>
   `
 }
+
+function createModal () {
+  var unmount = null
+
+  var modal = base.modal({
+    onexit: onexit,
+    render: function (name) {
+      return html`
+        <div class="measure-wide bg-white ba bw2 pa4 tc">
+          <h2 class="f2">Check out this sweet modal</h2>
+          <p class="b f6">
+            Click on the button, press ESC or click outside the modal to close
+          </p>
+          <button
+            onclick=${onexit}
+            class="mt4 bn no-underline br1 white bg-blue grow b inline-flex items-center pv2 ph3 pointer">
+            Oh yeah neat
+          </button>
+        </div>
+      `
+    }
+  })
+
+  var triggerModal = html`
+    <button
+      class="bn no-underline br1 white bg-blue grow b inline-flex items-center pv2 ph3 pointer"
+      onclick=${onclick}>
+      Toggle modal
+    </button>
+  `
+
+  return triggerModal
+
+  function onexit (e) {
+    unmount()
+    unmount = null
+  }
+
+  function onclick () {
+    unmount = append(modal(), document.body)
+  }
+}
+
