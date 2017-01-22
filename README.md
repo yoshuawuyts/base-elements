@@ -31,7 +31,7 @@ Create a circular avatar image.
 ## progress(value, opts?)
 Create a progress bar.
 `value` is a number between 0 and 1. `opts` can contain:
-- __reverse:__ (default: `'false'`) reverses the progress bar direction
+- __reverse:__ (default: `'false'`) reverse the progress bar direction
 - __class:__ (default: `''`) set additional classes on the element
 
 ## tooltip(text, opts, child)
@@ -39,6 +39,16 @@ Create a tooltip on a child element from a string. `opts` can contain:
 - __position:__ (default: `'up'`) set the position of the tooltip. Enums:
   `{ 'up', 'down', 'left', 'right' }`
 - __class:__ (default: `''`) set additional classes on the element
+
+## input(label, name, opts)
+Create an input element. `label` is a string. `name` is a string. `opts` can contain:
+- __type:__ (default: `''`) set a type
+- __placeholder:__ (default: `''`) set a placeholder
+- __hideLabel:__ (default: `false`) hide the label
+- __containerClass:__ (default: `''`) set additional classes on the container element
+- __labelClass:__ (default: `''`) set additional classes on the label element
+- __inputClass:__ (default: `''`) set additional classes on the input element
+
 
 ## See Also
 - [bel](https://github.com/shama/bel)
