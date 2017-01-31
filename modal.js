@@ -61,7 +61,7 @@ function modal (opts) {
   }
 
   function pressedEscape (e) {
-    if (e.key !== 'Escape') return onexit()
+    if (e.key === 'Escape') onexit()
   }
 }
 
