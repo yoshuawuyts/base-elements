@@ -1,6 +1,6 @@
 {
   "name": "base-elements",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A selection of native DOM elements",
   "main": "index.js",
   "scripts": {
