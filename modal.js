@@ -14,6 +14,7 @@ function modal (opts) {
   opts = xtend(opts)
 
   var onexit = opts.onexit || noop
+  var _clx = opts.class || ''
   var onunload = opts.onunload
   var onload = opts.onload
   var render = opts.render
@@ -40,7 +41,7 @@ function modal (opts) {
 
     innerContent = render.apply(opts.render, args)
     var clx = 'fixed flex items-center justify-center top-0 left-0 ' +
-      'h-100 w-100 z-9999'
+      'h-100 w-100 z-9999 ' + _clx
 
     return html`
       <div class=${clx}>

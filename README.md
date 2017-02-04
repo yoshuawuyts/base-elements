@@ -47,6 +47,7 @@ Create a new modal element. `opts` is similar to the those passed into
   floated in the center of the page.
 - __onexit:__ called when the element scrolls out of view, or the `esc` key is
   pressed. Useful to trigger unmounts with
+- __class:__ add extra classes on the element
 
 ## See Also
 - [bel](https://github.com/shama/bel)
