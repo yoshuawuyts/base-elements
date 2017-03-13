@@ -34,6 +34,11 @@ Create a progress bar.
 - __reverse:__ (default: `'false'`) reverses the progress bar direction
 - __class:__ (default: `''`) set additional classes on the element
 
+## toolbar(opts?)
+Create a toolbar.
+- __innerContent:__ (default: `''`) set the innerContent of the toolbar
+- __class:__ (default: `''`) set additional classes on the element
+
 ## tooltip(text, opts, child)
 Create a tooltip on a child element from a string. `opts` can contain:
 - __position:__ (default: `'up'`) set the position of the tooltip. Enums:
