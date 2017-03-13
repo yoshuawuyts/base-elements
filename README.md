@@ -49,6 +49,12 @@ Create a new modal element. `opts` is similar to the those passed into
   pressed. Useful to trigger unmounts with
 - __class:__ add extra classes on the element
 
+## spacer(flex, direction)
+Create a new spacer element. For when you need to create some space between elements
+that are in a flex box.
+- __flex:__ (default: '1'). The flex css property.
+- __direction:__ The direction you want the spacer to fill
+
 ## See Also
 - [bel](https://github.com/shama/bel)
 - [tachyons](https://github.com/mrmrs/tachyons)
