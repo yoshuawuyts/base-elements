@@ -8,6 +8,7 @@ function flexStyle (count, direction) {
   `
 }
 
+// (str, str) -> obj
 module.exports = function (flex, direction) {
   flex = flex || '1'
   direction = direction || 'row'
