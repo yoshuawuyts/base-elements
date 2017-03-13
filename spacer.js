@@ -2,9 +2,9 @@ var assert = require('assert')
 var html = require('bel')
 
 function flexStyle (count, direction) {
-  return `-webkit-box-flex: ${count}
-        -ms-flex: ${count}
-            flex: ${count}
+  return `-webkit-box-flex: ${count};
+        -ms-flex: ${count};
+            flex: ${count};
   `
 }
 
