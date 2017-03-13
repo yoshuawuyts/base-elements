@@ -9,9 +9,9 @@ module.exports = function (opts) {
 
   var innerContent = opts.innerContent || null
   var cls = opts.class || ''
-  
+
   assert.equal(typeof cls, 'string', 'base-elements/toolbar: cls should be a string')
-  
+
   return html`
     <nav class="flex w-100 ${cls}">
       ${innerContent}
