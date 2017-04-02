@@ -1,69 +1,71 @@
-'use strict'
-
-var component = require('nanocomponent')
+var Nanocomponent = require('nanocomponent')
 var assert = require('assert')
-var xtend = require('xtend')
+var css = require('sheetify')
 var html = require('bel')
 
-module.exports = modal
-
-function modal (opts) {
-  assert.equal(typeof opts, 'object', 'base-elements/modal: opts should be type object')
-  assert.equal(typeof opts.render, 'function', 'base-elements/modal: opts.render should be type function')
-
-  opts = xtend(opts)
-
-  var onexit = opts.onexit || noop
-  var _clx = opts.class || ''
-  var onunload = opts.onunload
-  var onload = opts.onload
-  var render = opts.render
-  var innerContent = null
-
-  opts.onunload = function () {
-    document.body.removeEventListener('mousedown', clickedOutside, false)
-    document.body.removeEventListener('keydown', pressedEscape, false)
-    innerContent = null
-    if (onunload) onunload()
+var styles = css`
+  :host {
+    position: fixed;
+    display: flex;
+    justify-content: items-center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
   }
+`
 
-  opts.onload = function () {
-    document.body.addEventListener('mousedown', clickedOutside, false)
-    document.body.addEventListener('keydown', pressedEscape, false)
-    if (onload) onload()
-  }
+module.exports = Modal
 
-  opts.render = function () {
-    var args = []
-    for (var i = 0, len = arguments.length; i < len; i++) {
-      args[i] = arguments[i]
-    }
+function Modal (opts, render) {
+  if (!(this instanceof Modal)) return new Modal(opts, render)
 
-    innerContent = render.apply(opts.render, args)
-    var clx = 'fixed flex items-center justify-center top-0 left-0 ' +
-      'h-100 w-100 z-9999 ' + _clx
+  assert.equal(typeof opts, 'object', 'modal-element: opts should be type object')
+  assert.equal(typeof render, 'function', 'modal-element: render should be type function')
 
-    return html`
-      <div class=${clx}>
-        ${innerContent}
-      </div>
-    `
-  }
+  this._handleRender = render
+  this._innerContent = null
+  this._clx = opts.class
+}
+Modal.prototype = Object.create(Nanocomponent.prototype)
 
-  return component(opts)
+Modal.prototype._render = function () {
+  var len = arguments.length
+  var args = new Array(len)
+  for (var i = 0; i < len; i++) args[i] = arguments[i]
 
-  function clickedOutside (e) {
-    var source = e.target
-    while (source.parentNode) {
-      if (source === innerContent) return
-      source = source.parentNode
-    }
-    onexit()
-  }
-
-  function pressedEscape (e) {
-    if (e.key === 'Escape') onexit()
-  }
+  this._innerContent = this._handleRender.apply(this, args)
+  return html`
+    <div class=${styles + ' ' + this._clx}>
+      ${this._innerContent}
+    </div>
+  `
 }
 
-function noop () {}
+Modal.prototype._exit = function noop () {}
+
+Modal.prototype._load = function () {
+  document.body.addEventListener('mousedown', this._handleClick, false)
+  document.body.addEventListener('keydown', this._handleKeydown, false)
+}
+
+Modal.prototype._unload = function () {
+  document.body.removeEventListener('mousedown', this._handleClick, false)
+  document.body.removeEventListener('keydown', this._handleKeydown, false)
+  this._innerContent = null
+}
+
+// detect if someone clicked outside the modal or inside it
+Modal.prototype._handleClick = function (e) {
+  var source = e.target
+  while (source.parentNode) {
+    if (source === this._innerContent) return
+    source = source.parentNode
+  }
+  this._onexit()
+}
+
+Modal.prototype._handleKeydown = function (e) {
+  if (e.key === 'Escape') this._onexit()
+}
