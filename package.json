@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "append-child": "^1.0.0",
-    "bankai": "^5.2.1",
+    "bankai": "^7.0.0",
     "choo": "^4.0.0-1",
     "dependency-check": "^2.6.0",
     "gh-pages": "^0.12.0",
