@@ -27,7 +27,7 @@
   "dependencies": {
     "balloon-css": "^0.4.0",
     "bel": "^4.5.0",
-    "nanocomponent": "^2.0.0",
+    "nanocomponent": "^4.0.2",
     "sheetify": "^6.0.1",
     "xtend": "^4.0.1"
   },
